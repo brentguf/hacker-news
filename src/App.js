@@ -41,17 +41,17 @@ class App extends Component {
   render() {
     const { searchTerm, result } = this.state;
 
-    if (result === null) return <div>Loading...</div>;
-
     return (
       <div className="page">
         <div className="interactions">
           <Search>Search...</Search>
         </div>
-        <Table 
+        { result ? <Table 
           onDismiss={this.onDismiss}
           result={result} 
           searchTerm={searchTerm} />
+          : <div>Loading...</div> 
+        }
       </div>
     );
   }
