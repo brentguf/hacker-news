@@ -5,15 +5,18 @@ const isSearched = (searchTerm) => {
   return item => item.title.toLowerCase().includes(searchTerm.toLowerCase());
 }
 
-const Table = ( { result, searchTerm } ) => {
+const Table = ( { onDismiss, result, searchTerm } ) => {
   return (
     <div className="table">
       { 
         result
           .filter(isSearched(searchTerm))
-          .map(item => <TableItem 
+          .map(item => (
+          <TableItem
+            onDismiss={onDismiss}
             key={item.objectID}
-            item={item} />)
+            item={item} 
+          />))
       }
     </div>
   );

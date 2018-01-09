@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 
-const TableItem = ({ item }) => {
+const TableItem = ({ onDismiss, item }) => {
   return (
     <div key={item.objectID} className="table-row">
       <span>
@@ -12,6 +12,8 @@ const TableItem = ({ item }) => {
       <span>{item.points}</span>
       <span>
         <Button
+          onClick={() => onDismiss(item)}
+          item={item}
           className="button-inline">
           Dismiss
         </Button>

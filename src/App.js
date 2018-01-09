@@ -29,6 +29,14 @@ class App extends Component {
     this.setState({searchTerm: e.target.value});
   }
 
+  onDismiss = (itemToDismiss) => {
+    this.setState({
+      result: this.state.result.filter(item => {
+        return item.objectID !== itemToDismiss.objectID;
+      })
+    });
+  };
+
   render() {
     const { searchTerm, result } = this.state;
 
@@ -39,7 +47,10 @@ class App extends Component {
         <div className="interactions">
           <Search>Search...</Search>
         </div>
-        <Table result={result} searchTerm={searchTerm} />
+        <Table 
+          onDismiss={this.onDismiss}
+          result={result} 
+          searchTerm={searchTerm} />
       </div>
     );
   }

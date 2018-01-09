@@ -2,11 +2,12 @@ import React from 'react';
 
 const Button = (props) => {
   const {
+    onClick,
     children
   } = props;
 
   return (
-    <button>
+    <button onClick={onClick}>
       { children }
     </button>
   );
