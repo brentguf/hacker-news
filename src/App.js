@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import Search from './components/Search';
+import Table from './components/Table';
 
 const DEFAULT_QUERY = 'redux';
 const PATH_BASE = 'http://hn.algolia.com/api/v1';
 const PATH_SPECIFIC = '/search';
 const PARAM = 'query=';
-
-const isSearched = (searchTerm) => {
-  return item => item.title.toLowerCase().includes(searchTerm.toLowerCase());
-}
 
 class App extends Component {
 
@@ -37,15 +35,11 @@ class App extends Component {
     if (result === null) return <div>Loading...</div>;
 
     return (
-      <div className="App">
-        <input onChange={this.onInputChange} type="text"/>
-        <ul>
-          {
-            result
-              .filter(isSearched(searchTerm))
-              .map(item => <li key={item.objectID}>{item.title}</li>)
-          }
-        </ul>
+      <div className="page">
+        <div className="interactions">
+          <Search>Search...</Search>
+        </div>
+        <Table result={result} searchTerm={searchTerm} />
       </div>
     );
   }
