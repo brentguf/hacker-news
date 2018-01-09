@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './index.css';
 import './App.css';
 import Search from './components/Search';
 import Table from './components/Table';

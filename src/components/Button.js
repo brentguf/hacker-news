@@ -2,13 +2,13 @@ import React from 'react';
 
 const Button = (props) => {
   const {
-    onClick,
-    children
+    children,
+    onClick
   } = props;
 
   return (
     <button onClick={onClick}>
-      { children }
+      {children}
     </button>
   );
 }

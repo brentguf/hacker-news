@@ -13,7 +13,6 @@ const TableItem = ({ onDismiss, item }) => {
       <span>
         <Button
           onClick={() => onDismiss(item)}
-          item={item}
           className="button-inline">
           Dismiss
         </Button>
