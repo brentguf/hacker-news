@@ -1,16 +1,11 @@
 import React from 'react';
 import TableItem from './TableItem';
 
-const isSearched = (searchTerm) => {
-  return item => item.title.toLowerCase().includes(searchTerm.toLowerCase());
-}
-
-const Table = ( { onDismiss, result, searchTerm } ) => {
+const Table = ( { onDismiss, result } ) => {
   return (
     <div className="table">
       { 
         result
-          .filter(isSearched(searchTerm))
           .map(item => (
           <TableItem
             onDismiss={onDismiss}

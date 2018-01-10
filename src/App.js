@@ -17,17 +17,35 @@ class App extends Component {
   }
 
   componentDidMount = () => {
+    this.fetchStories();
+  }
+
+  clearStories = () => {
+    this.setState({
+      result: null
+    });
+  }
+
+  fetchStories = () => {
     const { searchTerm } = this.state;
     const url = `${PATH_BASE}${PATH_SPECIFIC}?${PARAM}${searchTerm}`;
-    
+
     fetch(url)
       .then(response => response.json())
       .then(result => this.setState({ result: result.hits }))
       .catch(e => e);
   }
- 
+
   onInputChange = (e) => {
-    this.setState({searchTerm: e.target.value});
+    this.setState({
+      searchTerm: e.target.value
+    });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.clearStories();
+    this.fetchStories();
   }
 
   onDismiss = (itemToDismiss) => {
@@ -44,12 +62,16 @@ class App extends Component {
     return (
       <div className="page">
         <div className="interactions">
-          <Search>Search...</Search>
+          <Search 
+            searchTerm={searchTerm} 
+            onSubmit={this.onSubmit}
+            onInputChange={this.onInputChange}>
+            Search...
+          </Search>
         </div>
         { result ? <Table 
           onDismiss={this.onDismiss}
-          result={result} 
-          searchTerm={searchTerm} />
+          result={result}  />
           : <div>Loading...</div> 
         }
       </div>
