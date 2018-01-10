@@ -1,11 +1,11 @@
 import React from 'react';
 import TableItem from './TableItem';
 
-const Table = ( { onDismiss, result } ) => {
+const Table = ( { onDismiss, stories } ) => {
   return (
     <div className="table">
       { 
-        result
+        stories
           .map(item => (
           <TableItem
             onDismiss={onDismiss}

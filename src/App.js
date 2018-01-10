@@ -7,13 +7,15 @@ import Table from './components/Table';
 const DEFAULT_QUERY = 'redux';
 const PATH_BASE = 'http://hn.algolia.com/api/v1';
 const PATH_SPECIFIC = '/search';
-const PARAM = 'query=';
+const PARAM_SEARCH = 'query=';
+const PARAM_PAGE = 'page=';
 
 class App extends Component {
 
   state = {
     searchTerm: DEFAULT_QUERY,
-    result: null
+    stories: null,
+    page: 0
   }
 
   componentDidMount = () => {
@@ -22,18 +24,29 @@ class App extends Component {
 
   clearStories = () => {
     this.setState({
-      result: null
+      stories: null
     });
   }
 
-  fetchStories = () => {
+  fetchStories = (page = 0) => {
     const { searchTerm } = this.state;
-    const url = `${PATH_BASE}${PATH_SPECIFIC}?${PARAM}${searchTerm}`;
+    const url = `${PATH_BASE}${PATH_SPECIFIC}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`;
 
     fetch(url)
       .then(response => response.json())
-      .then(result => this.setState({ result: result.hits }))
+      .then(result => this.updateStories(result))
       .catch(e => e);
+  }
+
+  updateStories = (result) => {
+    const stories = this.state.stories;
+    const updatedStories = stories ? 
+      [...stories, ...result.hits] : [...result.hits];
+
+    this.setState({
+      stories: updatedStories, 
+      page: result.page
+    })
   }
 
   onInputChange = (e) => {
@@ -50,15 +63,14 @@ class App extends Component {
 
   onDismiss = (itemToDismiss) => {
     this.setState({
-      result: this.state.result.filter(item => {
+      stories: this.state.stories.filter(item => {
         return item.objectID !== itemToDismiss.objectID;
       })
     });
   };
 
   render() {
-    const { searchTerm, result } = this.state;
-
+    const { searchTerm, stories, page } = this.state;
     return (
       <div className="page">
         <div className="interactions">
@@ -69,11 +81,14 @@ class App extends Component {
             Search...
           </Search>
         </div>
-        { result ? <Table 
+        { stories ? <Table 
           onDismiss={this.onDismiss}
-          result={result}  />
+          stories={stories}  />
           : <div>Loading...</div> 
         }
+        <div className="interactions">
+          <button onClick={() => this.fetchStories(page + 1)}>Load More Stories...</button>
+        </div>
       </div>
     );
   }
