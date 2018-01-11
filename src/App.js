@@ -3,7 +3,6 @@ import './index.css';
 import './App.css';
 import Search from './components/Search';
 import Table from './components/Table';
-import Button from './components/Button';
 import fetch from 'isomorphic-fetch';
 
 const DEFAULT_QUERY = 'redux';
@@ -90,7 +89,7 @@ class App extends Component {
           : <div>Loading...</div>
         }
         <div className="interactions">
-          <Button onClick={() => this.fetchStories(page + 1)}>Load More Stories...</Button>
+          <button onClick={() => this.fetchStories(page + 1)}>Load More Stories...</button>
         </div>
       </div>
     );

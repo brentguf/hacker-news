@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from './Button';
 import PropTypes from 'prop-types';
 
 const TableItem = ({ onDismiss, item }) => {
@@ -12,11 +11,11 @@ const TableItem = ({ onDismiss, item }) => {
       <span>{item.num_comments}</span>
       <span>{item.points}</span>
       <span>
-        <Button
+        <button
           onClick={() => onDismiss(item)}
           className="button-inline">
           Dismiss
-        </Button>
+        </button>
       </span>
     </div>
   ) 
