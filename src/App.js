@@ -3,6 +3,7 @@ import './index.css';
 import './App.css';
 import Search from './components/Search';
 import Table from './components/Table';
+import fetch from 'isomorphic-fetch';
 
 const DEFAULT_QUERY = 'redux';
 const PATH_BASE = 'http://hn.algolia.com/api/v1';
@@ -15,7 +16,7 @@ class App extends Component {
   state = {
     searchTerm: DEFAULT_QUERY,
     stories: null,
-    page: 0
+    page: 0,
   }
 
   componentDidMount = () => {
@@ -35,7 +36,7 @@ class App extends Component {
     fetch(url)
       .then(response => response.json())
       .then(result => this.updateStories(result))
-      .catch(e => e);
+      .catch(e => console.log(e))
   }
 
   updateStories = (result) => {
@@ -82,9 +83,10 @@ class App extends Component {
           </Search>
         </div>
         { stories ? <Table 
-          onDismiss={this.onDismiss}
-          stories={stories}  />
-          : <div>Loading...</div> 
+            onDismiss={this.onDismiss}
+            stories={stories} 
+          />
+          : <div>Loading...</div>
         }
         <div className="interactions">
           <button onClick={() => this.fetchStories(page + 1)}>Load More Stories...</button>
