@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import PropTypes from 'prop-types';
 
 const TableItem = ({ onDismiss, item }) => {
   return (
@@ -19,6 +20,12 @@ const TableItem = ({ onDismiss, item }) => {
       </span>
     </div>
   ) 
+}
+
+TableItem.propTypes = {
+  onDismiss: PropTypes.func.isRequired,
+  key: PropTypes.string.isRequired,
+  item: PropTypes.object.isRequired
 }
 
 export default TableItem;
