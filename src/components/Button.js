@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Button = (props) => {
   const {
@@ -11,6 +12,10 @@ const Button = (props) => {
       {children}
     </button>
   );
+}
+
+Button.propTypes = {
+  
 }
 
 export default Button;
