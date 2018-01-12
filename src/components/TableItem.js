@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 const TableItem = ({ onDismiss, item }) => {
   return (
     <div key={item.objectID} className="table-row">
-      <span>
+      <span style={{'width': '50%'}}>
         <a href={item.url}>{item.title}</a>
       </span>
-      <span>{item.author}</span>
-      <span>{item.num_comments}</span>
-      <span>{item.points}</span>
+      <span style={{'width': '15%'}}>{item.author}</span>
+      <span style={{'width': '10%'}}>{item.num_comments}</span>
+      <span style={{'width': '10%'}}>{item.points}</span>
       <span>
         <button
           onClick={() => onDismiss(item)}
