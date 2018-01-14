@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TableItem from './TableItem';
 import PropTypes from 'prop-types';
 
-const Table = ( { onDismiss, stories } ) => {
-  return (
-    <div className="table">
-      <div className="table-header">
-        <span style={{ 'width': '55%'}}>Title</span>
-        <span style={{ 'width': '15%'}}>Author</span>
-        <span style={{ 'width': '10%'}}>Comments</span>
-        <span style={{ 'width': '10%'}}>Points</span>
-        <span style={{ 'width': '10%'}}>Archive</span>
+class Table extends Component {
+
+  render() {
+    const { onDismiss, stories } = this.props;
+
+    return (
+      <div className="table" >
+        <div className="table-header">
+          <span style={{ 'width': '55%' }}>Title</span>
+          <span style={{ 'width': '15%' }}>Author</span>
+          <span style={{ 'width': '10%' }}>Comments</span>
+          <span style={{ 'width': '10%' }}>Points</span>
+          <span style={{ 'width': '10%' }}>Archive</span>
+        </div>
+        {
+          stories
+            .map(item => (
+              <TableItem
+                key={item.objectID}
+                item={item}
+              />))
+        }
       </div>
-      { 
-        stories
-          .map(item => (
-          <TableItem
-            onDismiss={onDismiss}
-            key={item.objectID}
-            item={item} 
-          />))
-      }
-    </div>
-  );
+    );
+  }
 }
 
 Table.propTypes = {
