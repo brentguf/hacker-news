@@ -4,7 +4,6 @@ import './App.css';
 import Search from './components/Search';
 import Table from './components/Table';
 import fetch from 'isomorphic-fetch';
-import { sortBy } from 'lodash';
 
 const DEFAULT_QUERY = 'redux';
 const PATH_BASE = 'http://hn.algolia.com/api/v1';
@@ -45,7 +44,7 @@ class App extends Component {
     const stories = this.state.stories;
     const updatedStories = stories ? 
       [...stories, ...result.hits] : [...result.hits];
-
+    
     this.setState({
       stories: updatedStories, 
       page: result.page
@@ -72,13 +71,6 @@ class App extends Component {
     });
   };
 
-  onSort = (sortingOption) => {
-    const { stories } = this.state;
-    
-    const sortedStories = sortBy(stories, [sortingOption])
-    this.setState({ stories: sortedStories, sortingOption });
-  }
-
   render() {
     const { searchTerm, stories, page } = this.state;
     return (
@@ -94,7 +86,6 @@ class App extends Component {
         { stories ? <Table 
             stories={stories} 
             onDismiss={this.onDismiss}
-            onSort={this.onSort}
           />
           : <div>Loading...</div>
         }
