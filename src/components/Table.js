@@ -10,12 +10,10 @@ class Table extends Component {
     return (
       <div className="table" >
         <div className="table-header">
-          <span style={{ 'width': '55%' }}>
-            <button onClick={onSort}>Title</button>
-          </span>
-          <span style={{ 'width': '15%' }}>Author</span>
-          <span style={{ 'width': '10%' }}>Comments</span>
-          <span style={{ 'width': '10%' }}>Points</span>
+          <span onClick={() => onSort('title')} style={{ 'width': '55%' }}>Title</span>
+          <span onClick={() => onSort('author')} style={{ 'width': '15%' }}>Author</span>
+          <span onClick={() => onSort('num_comments')} style={{ 'width': '10%' }}>Comments</span>
+          <span onClick={() => onSort('points')} style={{ 'width': '10%' }}>Points</span>
           <span style={{ 'width': '10%' }}>Archive</span>
         </div>
         {

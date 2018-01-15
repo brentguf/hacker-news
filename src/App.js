@@ -16,7 +16,7 @@ class App extends Component {
 
   state = {
     searchTerm: DEFAULT_QUERY,
-    sortingOption: 'title',
+    sortingOption: 'points',
     stories: null,
     page: 0,
   }
@@ -72,12 +72,11 @@ class App extends Component {
     });
   };
 
-  onSort = () => {
-    const { sortingOption } = this.state;
-    const stories = [...this.state.stories];
+  onSort = (sortingOption) => {
+    const { stories } = this.state;
+    
     const sortedStories = sortBy(stories, [sortingOption])
-
-    this.setState({ stories: sortedStories });
+    this.setState({ stories: sortedStories, sortingOption });
   }
 
   render() {
