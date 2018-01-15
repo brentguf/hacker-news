@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 class Table extends Component {
 
   render() {
-    const { onDismiss, stories } = this.props;
+    const { stories, onDismiss, onSort } = this.props;
 
     return (
       <div className="table" >
         <div className="table-header">
-          <span style={{ 'width': '55%' }}>Title</span>
+          <span style={{ 'width': '55%' }}>
+            <button onClick={onSort}>Title</button>
+          </span>
           <span style={{ 'width': '15%' }}>Author</span>
           <span style={{ 'width': '10%' }}>Comments</span>
           <span style={{ 'width': '10%' }}>Points</span>
@@ -22,6 +24,7 @@ class Table extends Component {
               <TableItem
                 key={item.objectID}
                 item={item}
+                onDismiss={onDismiss}
               />))
         }
       </div>

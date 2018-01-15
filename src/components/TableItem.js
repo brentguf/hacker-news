@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const TableItem = ({ onDismiss, item }) => {
   return (
-    <div key={item.objectID} className="table-row">
+    <div className="table-row">
       <span style={{'width': '55%'}}>
         <a href={item.url}>{item.title}</a>
       </span>
@@ -23,7 +23,6 @@ const TableItem = ({ onDismiss, item }) => {
 
 TableItem.propTypes = {
   onDismiss: PropTypes.func.isRequired,
-  key: PropTypes.string.isRequired,
   item: PropTypes.object.isRequired
 }
 
