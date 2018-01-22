@@ -7,13 +7,15 @@ class Table extends Component {
 
   state = {
     sortingOption: 'points',
+    sortingType: 'alphanumeric',
     shouldReverse: true
   }
 
-  setSortingOption = (sortingOption) => {
+  setSortingOption = (sortingOption, sortingType) => {
     this.setState(prevState => {
       return {
         sortingOption,
+        sortingType,
         shouldReverse: !prevState.shouldReverse
       };
     });
@@ -35,10 +37,10 @@ class Table extends Component {
     return (
       <div className="table" >
         <div className="table-header">
-          <span onClick={() => this.setSortingOption('title')} style={{ 'width': '55%' }}>Title</span>
-          <span onClick={() => this.setSortingOption('author')} style={{ 'width': '15%' }}>Author</span>
-          <span onClick={() => this.setSortingOption('num_comments')} style={{ 'width': '10%' }}>Comments</span>
-          <span onClick={() => this.setSortingOption('points')} style={{ 'width': '10%' }}>Points</span>
+          <span onClick={() => this.setSortingOption('title', 'alphanumeric')} style={{ 'width': '55%' }}>Title</span>
+          <span onClick={() => this.setSortingOption('author', 'alphanumeric')} style={{ 'width': '15%' }}>Author</span>
+          <span onClick={() => this.setSortingOption('num_comments', 'numeric')} style={{ 'width': '10%' }}>Comments</span>
+          <span onClick={() => this.setSortingOption('points', 'numeric')} style={{ 'width': '10%' }}>Points</span>
           <span style={{ 'width': '10%' }}>Archive</span>
         </div>
         {
