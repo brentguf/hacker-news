@@ -29,10 +29,10 @@ class Table extends Component {
   sortStories = (stories) => {
     const { sortingOption, sortingType, shouldReverse } = this.state;
 
-    if (shouldReverse) { 
-      return sortBy(stories, sortingOption).reverse(); 
-    };
-
+    if ( (sortingType === 'numeric' && !shouldReverse) ||
+      (sortingType === 'alphanumeric' && shouldReverse) ) {
+      return sortBy(stories, sortingOption).reverse();
+    } 
     return sortBy(stories, sortingOption);
   }
 
