@@ -44,14 +44,23 @@ class Table extends Component {
 
   render() {
     const { stories, onDismiss } = this.props;
+    const { sortingOption } = this.state;
 
     return (
       <div className="table" >
         <div className="table-header">
-          <span onClick={() => this.setSortingOption('title', 'alphanumeric')} style={{ 'width': '55%' }}>Title</span>
-          <span onClick={() => this.setSortingOption('author', 'alphanumeric')} style={{ 'width': '15%' }}>Author</span>
-          <span onClick={() => this.setSortingOption('num_comments', 'numeric')} style={{ 'width': '10%' }}>Comments</span>
-          <span onClick={() => this.setSortingOption('points', 'numeric')} style={{ 'width': '10%' }}>Points</span>
+          <span className={'title' === sortingOption ? 'table-header-active' : ''} 
+                onClick={() => this.setSortingOption('title', 'alphanumeric')} 
+                style={{ 'width': '55%' }}>Title</span>
+          <span className={'author' === sortingOption ? 'table-header-active' : ''} 
+                onClick={() => this.setSortingOption('author', 'alphanumeric')} 
+                style={{ 'width': '15%' }}>Author</span>
+          <span className={'num_comments' === sortingOption ? 'table-header-active' : ''} 
+                onClick={() => this.setSortingOption('num_comments', 'numeric')} 
+                style={{ 'width': '10%' }}>Comments</span>
+          <span className={'points' === sortingOption ? 'table-header-active' : ''} 
+                onClick={() => this.setSortingOption('points', 'numeric')} 
+                style={{ 'width': '10%' }}>Points</span>
           <span style={{ 'width': '10%' }}>Archive</span>
         </div>
         {
