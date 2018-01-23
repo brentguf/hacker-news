@@ -12,16 +12,27 @@ class Table extends Component {
   }
 
   setSortingOption = (sortingOption, sortingType) => {
-    let shouldReverse = sortingType === 'numeric' ? true : false;
+    // if sorting option is the same => reverse
+    // if sorting option is different, check sorting type
+    // if sorting type is numeric => reverse
+    // if sorting type is alphanumeric => don't reverse
+    let shouldReverse;
+    
     this.setState(prevState => {
-      if (prevState.sortingOption === sortingOption) {
+      if (prevState.sortingOption !== sortingOption) {
+        if (sortingType === 'numeric') {
+          shouldReverse = true;
+        } else {
+          shouldReverse = false;
+        }
+      } else {
         shouldReverse = !prevState.shouldReverse;
       }
       
       return {
         sortingOption,
         sortingType,
-        shouldReverse: !prevState.shouldReverse
+        shouldReverse
       };
     });
   }
@@ -29,8 +40,7 @@ class Table extends Component {
   sortStories = (stories) => {
     const { sortingOption, sortingType, shouldReverse } = this.state;
 
-    if ( (sortingType === 'numeric' && !shouldReverse) ||
-      (sortingType === 'alphanumeric' && shouldReverse) ) {
+    if (shouldReverse) {
       return sortBy(stories, sortingOption).reverse();
     } 
     return sortBy(stories, sortingOption);
