@@ -20,11 +20,7 @@ class Table extends Component {
     
     this.setState(prevState => {
       if (prevState.sortingOption !== sortingOption) {
-        if (sortingType === 'numeric') {
-          shouldReverse = true;
-        } else {
-          shouldReverse = false;
-        }
+        shouldReverse = sortingType === 'numeric' ? true : false; 
       } else {
         shouldReverse = !prevState.shouldReverse;
       }
