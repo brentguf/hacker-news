@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TableHeader from './TableHeader';
 import TableItem from './TableItem';
 import PropTypes from 'prop-types';
 import { sortBy } from 'lodash';
@@ -7,7 +8,7 @@ class Table extends Component {
 
   state = {
     sortingOption: 'points',
-    sortingType: 'alphanumeric',
+    sortingType: 'numeric',
     shouldReverse: true
   }
 
@@ -34,7 +35,7 @@ class Table extends Component {
   }
 
   sortStories = (stories) => {
-    const { sortingOption, sortingType, shouldReverse } = this.state;
+    const { sortingOption, shouldReverse } = this.state;
 
     if (shouldReverse) {
       return sortBy(stories, sortingOption).reverse();
@@ -43,24 +44,26 @@ class Table extends Component {
   }
 
   render() {
-    const { stories, onDismiss } = this.props;
     const { sortingOption } = this.state;
+    const { stories, onDismiss } = this.props;
 
     return (
       <div className="table" >
         <div className="table-header">
-          <span className={'title' === sortingOption ? 'table-header-active' : ''} 
-                onClick={() => this.setSortingOption('title', 'alphanumeric')} 
-                style={{ 'width': '55%' }}>Title</span>
-          <span className={'author' === sortingOption ? 'table-header-active' : ''} 
-                onClick={() => this.setSortingOption('author', 'alphanumeric')} 
-                style={{ 'width': '15%' }}>Author</span>
-          <span className={'num_comments' === sortingOption ? 'table-header-active' : ''} 
-                onClick={() => this.setSortingOption('num_comments', 'numeric')} 
-                style={{ 'width': '10%' }}>Comments</span>
-          <span className={'points' === sortingOption ? 'table-header-active' : ''} 
-                onClick={() => this.setSortingOption('points', 'numeric')} 
-                style={{ 'width': '10%' }}>Points</span>
+          {
+            tableHeaders.map(header => {
+              const activeClassName = header.sortingOption === sortingOption ? 'table-header-active' : '';
+
+              return (
+                <TableHeader
+                  className={activeClassName}
+                  onSelect={() => this.setSortingOption(header.sortingOption, header.sortingType)}
+                  style={header.style}
+                  content={header.content}
+                  key={header.key}
+                />);
+            })            
+          }
           <span style={{ 'width': '10%' }}>Archive</span>
         </div>
         {
@@ -87,5 +90,36 @@ Table.propTypes = {
   })).isRequired,
   onDismiss: PropTypes.func.isRequired,
 }
+
+const tableHeaders = [
+  {
+    content: 'Title',
+    sortingOption: 'title',
+    sortingType: 'alphanumeric',
+    style: { 'width': '55%' },
+    key: 'header-1'
+  },
+  {
+    content: 'Author',
+    sortingOption: 'author',
+    sortingType: 'alphanumeric',
+    style: { 'width': '15%' },
+    key: 'header-2'
+  },
+  {
+    content: 'Comments',
+    sortingOption: 'num_comments',
+    sortingType: 'numeric',
+    style: { 'width': '10%' },
+    key: 'header-3'
+  },
+  {
+    content: 'Points',
+    sortingOption: 'points',
+    sortingType: 'numeric',
+    style: { 'width': '10%' },
+    key: 'header-4'
+  }
+];
 
 export default Table;
