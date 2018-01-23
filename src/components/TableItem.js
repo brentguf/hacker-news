@@ -6,7 +6,7 @@ TableItem.propTypes = {
   item: PropTypes.object.isRequired
 }
 
-const TableItem = ({ onDismiss, item }) => {
+function TableItem({ onDismiss, item }) {
   return (
     <div className="table-row">
       <span style={{'width': '55%'}}>

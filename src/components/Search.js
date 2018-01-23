@@ -7,7 +7,7 @@ Search.propTypes = {
   onInputChange: PropTypes.func.isRequired
 }
 
-const Search = (props) => {
+function Search(props) {
   const {
     children,
     onSubmit,

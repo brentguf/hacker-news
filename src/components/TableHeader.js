@@ -1,4 +1,12 @@
 import React from 'react';
+import { string, func, object } from 'prop-types';
+
+TableHeader.propTypes = {
+  className: string.isRequired,
+  onSelect: func.isRequired,
+  style: object.isRequired,
+  content: string.isRequired
+}
 
 function TableHeader(props) {
   const { className,
