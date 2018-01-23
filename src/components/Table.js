@@ -4,6 +4,17 @@ import TableItem from './TableItem';
 import PropTypes from 'prop-types';
 import { sortBy } from 'lodash';
 
+Table.propTypes = {
+  stories: PropTypes.arrayOf(PropTypes.shape({
+    objectID: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    url: PropTypes.string,
+    num_comments: PropTypes.number,
+    point: PropTypes.number
+  })).isRequired,
+  onDismiss: PropTypes.func.isRequired,
+}
+
 class Table extends Component {
 
   state = {
@@ -78,17 +89,6 @@ class Table extends Component {
       </div>
     );
   }
-}
-
-Table.propTypes = {
-  stories: PropTypes.arrayOf(PropTypes.shape({
-    objectID: PropTypes.string.isRequired,
-    author: PropTypes.string,
-    url: PropTypes.string,
-    num_comments: PropTypes.number,
-    point: PropTypes.number
-  })).isRequired,
-  onDismiss: PropTypes.func.isRequired,
 }
 
 const tableHeaders = [

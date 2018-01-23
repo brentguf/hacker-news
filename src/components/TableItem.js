@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+TableItem.propTypes = {
+  onDismiss: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
+}
+
 const TableItem = ({ onDismiss, item }) => {
   return (
     <div className="table-row">
@@ -19,11 +24,6 @@ const TableItem = ({ onDismiss, item }) => {
       </span>
     </div>
   ) 
-}
-
-TableItem.propTypes = {
-  onDismiss: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired
 }
 
 export default TableItem;

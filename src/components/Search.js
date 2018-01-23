@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+Search.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired
+}
+
 const Search = (props) => {
   const {
     children,
@@ -18,12 +24,6 @@ const Search = (props) => {
       <button type="submit">{children}</button>
     </form>
   );
-}    
-  
-Search.propTypes = {
-  searchTerm: PropTypes.string.isRequired, 
-  onSubmit: PropTypes.func.isRequired, 
-  onInputChange: PropTypes.func.isRequired
-}
+}   
 
 export default Search;
