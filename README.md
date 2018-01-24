@@ -1,1 +1,1 @@
-Hacker News clone using React.
+Hacker News Search clone using React.
