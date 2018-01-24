@@ -6,7 +6,7 @@ import Table from './components/Table';
 import fetch from 'isomorphic-fetch';
 
 const DEFAULT_QUERY = 'redux';
-const PATH_BASE = 'http://hn.algolia.com/api/v1';
+const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SPECIFIC = '/search';
 const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
