@@ -75,7 +75,7 @@ class App extends Component {
     const { searchTerm, stories, page } = this.state;
     return (
       <div className="page">
-        <div className="interactions">
+        <div className="header interactions">
           <Search 
             searchTerm={searchTerm} 
             onSubmit={this.onSubmit}
