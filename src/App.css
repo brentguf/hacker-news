@@ -54,19 +54,23 @@
   height: 100%;
 }
 
-.button-search:hover {
-  color: #fff;
-}
-
-.button-inline {
-  border-width: 0;
-  background: transparent;
+.button-dismiss {
+  border: 1px solid inherit;
+  background: #fff;
   color: inherit;
   text-align: inherit;
   -webkit-font-smoothing: inherit;
-  padding: 0;
+  padding: .5rem;
   font-size: inherit;
   cursor: pointer;
+}
+
+.button-dismiss:hover {
+  color: red;
+}
+
+.button-search:hover {
+  color: #fff;
 }
 
 .button-active {

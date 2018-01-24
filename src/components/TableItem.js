@@ -18,7 +18,7 @@ function TableItem({ onDismiss, item }) {
       <span style={{'width': '10%'}}>
         <button
           onClick={() => onDismiss(item)}
-          className="button-inline">
+          className="button-dismiss">
           Dismiss
         </button>
       </span>
