@@ -9,6 +9,9 @@
 }
 
 .header-primary {
+  font-weight: 100;
+  font-size: 1.5rem;
+  line-height: 40px;
   margin-right: 2rem;
 }
 
