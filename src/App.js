@@ -88,7 +88,7 @@ class App extends Component {
             stories={stories} 
             onDismiss={this.onDismiss}
           />
-          : <div>Loading...</div>
+          : <div className='table'>Loading...</div>
         }
         <div className="interactions">
           <button onClick={() => this.fetchStories(page + 1)}>Load More Stories...</button>
