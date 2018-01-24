@@ -32,16 +32,20 @@
   display: flex;
   line-height: 24px;
   font-size: 16px;
-  margin: 10px 0;
-  padding: 0 10px;
-  justify-content: space-between;
+  padding: 10px;
 }
 
-.table-header:hover {
+.table-header-item {
+  margin-right: .2rem;
+}
+
+.table-header-item:hover {
   cursor: pointer;
 }
+  
 
-.table-header-active {
+
+.table-header-item-active {
   text-decoration: underline;
 }
 
@@ -94,12 +98,10 @@
 .table-header > span {
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0 5px;
 }
 
 .table-row > span {
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0 5px;
 }
 

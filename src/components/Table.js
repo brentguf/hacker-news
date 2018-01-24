@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TableHeader from './TableHeader';
+import TableHeaderItem from './TableHeaderItem';
 import TableItem from './TableItem';
 import PropTypes from 'prop-types';
 import { sortBy } from 'lodash';
@@ -55,7 +55,7 @@ class Table extends Component {
   }
 
   render() {
-    const { sortingOption } = this.state;
+    const { sortingOption, shouldReverse } = this.state;
     const { stories, onDismiss } = this.props;
 
     return (
@@ -63,11 +63,15 @@ class Table extends Component {
         <div className="table-header">
           {
             tableHeaders.map(header => {
-              const activeClassName = header.sortingOption === sortingOption ? 'table-header-active' : '';
+              const isSelected = header.sortingOption === sortingOption;
+              const activeClassName = header.sortingOption === sortingOption ? 'table-header-item-active' : '';
+              const classes=['table-header-item', activeClassName];
 
               return (
-                <TableHeader
-                  className={activeClassName}
+                <TableHeaderItem
+                  isSelected={isSelected}
+                  shouldReverse={shouldReverse}
+                  className={classes.join(' ')}
                   onSelect={() => this.setSortingOption(header.sortingOption, header.sortingType)}
                   style={header.style}
                   content={header.content}
