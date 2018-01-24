@@ -23,10 +23,10 @@ function TableHeaderItem(props) {
         className={className}
       >{content}</span>
       { 
-        isSelected && !shouldReverse && <i class="fa fa-caret-down"></i>
+        isSelected && !shouldReverse && <i className="fa fa-caret-down"></i>
       }
       {
-        isSelected && shouldReverse && <i class="fa fa-caret-up"></i>
+        isSelected && shouldReverse && <i className="fa fa-caret-up"></i>
       }
 
     </div>

@@ -15,7 +15,8 @@
   margin-right: 2rem;
 }
 
-.interactions {
+.standalone-button {
+  margin-bottom: 2rem;
   text-align: center;
 }
 
@@ -43,8 +44,6 @@
   cursor: pointer;
 }
   
-
-
 .table-header-item-active {
   text-decoration: underline;
 }
@@ -62,7 +61,11 @@
   height: 100%;
 }
 
-.button-dismiss {
+.button-load {
+  border: 1px solid #000;
+}
+
+.button {
   border: 1px solid inherit;
   background: #fff;
   color: inherit;

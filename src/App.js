@@ -90,8 +90,8 @@ class App extends Component {
           />
           : <div className='table'>Loading...</div>
         }
-        <div className="interactions">
-          <button onClick={() => this.fetchStories(page + 1)}>Load More Stories...</button>
+        <div className="standalone-button">
+          <button className='button button-load' onClick={() => this.fetchStories(page + 1)}>Load More Stories...</button>
         </div>
       </div>
     );
