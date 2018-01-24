@@ -21,7 +21,7 @@ function Search(props) {
         value={searchTerm}
         onChange={onInputChange}
         type="text" />
-      <button type="submit">{children}</button>
+      <button className='button-search' type="submit">{children}</button>
     </form>
   );
 }   
