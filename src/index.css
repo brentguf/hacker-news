@@ -5,6 +5,10 @@ body {
   margin: 0;
 }
 
+h1 {
+  margin: 0;
+}
+
 a {
   color: #222;
   text-decoration: none;

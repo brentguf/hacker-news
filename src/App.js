@@ -76,6 +76,7 @@ class App extends Component {
     return (
       <div className="page">
         <div className="header interactions">
+          <h1>Hacker News Search</h1>
           <Search 
             searchTerm={searchTerm} 
             onSubmit={this.onSubmit}
