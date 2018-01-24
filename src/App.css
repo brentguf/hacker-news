@@ -24,6 +24,10 @@
   padding: 1rem;
 }
 
+.table-item {
+  line-height: 35px;
+}
+
 .table-header { 
   display: flex;
   line-height: 24px;
@@ -58,7 +62,7 @@
   border: 1px solid inherit;
   background: #fff;
   color: inherit;
-  text-align: inherit;
+  text-align: center;
   -webkit-font-smoothing: inherit;
   padding: .5rem;
   font-size: inherit;

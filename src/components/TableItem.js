@@ -9,13 +9,13 @@ TableItem.propTypes = {
 function TableItem({ onDismiss, item }) {
   return (
     <div className="table-row">
-      <span style={{'width': '55%'}}>
+      <span className='table-item' style={{'width': '55%'}}>
         <a href={item.url}>{item.title}</a>
       </span>
-      <span style={{'width': '15%'}}>{item.author}</span>
-      <span style={{'width': '10%'}}>{item.num_comments}</span>
-      <span style={{'width': '10%'}}>{item.points}</span>
-      <span style={{'width': '10%'}}>
+      <span className='table-item' style={{'width': '15%'}}>{item.author}</span>
+      <span className='table-item' style={{'width': '10%'}}>{item.num_comments}</span>
+      <span className='table-item' style={{'width': '10%'}}>{item.points}</span>
+      <span className='table-item' style={{'width': '10%'}}>
         <button
           onClick={() => onDismiss(item)}
           className="button-dismiss">
