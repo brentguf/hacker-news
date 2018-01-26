@@ -41,7 +41,7 @@ class App extends Component {
   }
 
   updateStories = (result) => {
-    const stories = this.state.stories;
+    const { stories } = this.state;
     const updatedStories = stories ? 
       [...stories, ...result.hits] : [...result.hits];
     

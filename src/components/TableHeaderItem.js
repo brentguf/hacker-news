@@ -15,6 +15,13 @@ function TableHeaderItem(props) {
     content,
     isSelected,
     shouldReverse } = props;
+  
+  let caret = null;
+
+  if (isSelected) {
+    caret = shouldReverse ? 
+      <i className="fa fa-caret-up"></i> : <i className="fa fa-caret-down"></i>
+  } 
 
   return (
     <div style={style}>
@@ -22,13 +29,7 @@ function TableHeaderItem(props) {
         onClick={onSelect}
         className={className}
       >{content}</span>
-      { 
-        isSelected && !shouldReverse && <i className="fa fa-caret-down"></i>
-      }
-      {
-        isSelected && shouldReverse && <i className="fa fa-caret-up"></i>
-      }
-
+      { caret }
     </div>
   );
 }

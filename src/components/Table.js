@@ -64,7 +64,7 @@ class Table extends Component {
           {
             tableHeaders.map(header => {
               const isSelected = header.sortingOption === sortingOption;
-              const activeClassName = header.sortingOption === sortingOption ? 'table-header-item-active' : '';
+              const activeClassName = isSelected ? 'table-header-item-active' : '';
               const classes=['table-header-item', activeClassName];
 
               return (
